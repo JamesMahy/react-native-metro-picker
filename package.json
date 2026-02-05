@@ -1,0 +1,12 @@
+{
+  "name": "react-native-metro-picker",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Chrome extension to connect to multiple React Native Metro debug targets",
+  "scripts": {
+    "update-devtools": "node scripts/update-devtools.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

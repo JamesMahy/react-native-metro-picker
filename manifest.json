@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "React Native Metro Picker",
+  "version": "1.0.0",
+  "description": "Connect to React Native Metro debug targets",
+  "permissions": ["storage"],
+  "host_permissions": ["http://*/*"],
+  "action": {
+    "default_title": "React Native Metro Picker"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_security_policy": {
+    "extension_pages": "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src ws://*:* http://*:*;"
+  }
+}

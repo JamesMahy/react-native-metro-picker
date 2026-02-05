@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>React Native Metro Picker</title>
+<meta name="color-scheme" content="dark">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="sidebar" aria-label="Hosts">
+  <div class="sidebar-header">Hosts</div>
+  <div class="host-list" id="hostList" role="list"></div>
+  <div class="add-host">
+    <form id="addHostForm">
+      <label for="hostInput" class="visually-hidden">Host address</label>
+      <input type="text" id="hostInput" placeholder="host:port  e.g. mac1.home.com:8081" autocomplete="off">
+      <button type="submit">Add</button>
+    </form>
+  </div>
+</nav>
+
+<main class="main">
+  <div class="toolbar hidden" id="toolbar">
+    <span class="host-label" id="toolbarHost"></span>
+    <span class="target-count" id="targetCount"></span>
+    <button class="refresh-btn" id="refreshBtn" aria-label="Refresh debug targets">Refresh</button>
+  </div>
+  <div class="targets" id="targets" aria-live="polite">
+    <div class="empty-state" id="emptyState">
+      Select a host from the sidebar<br>or add a new one to get started.
+    </div>
+  </div>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

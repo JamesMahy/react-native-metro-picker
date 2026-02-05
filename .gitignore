@@ -1,0 +1,8 @@
+node_modules/
+devtools/
+*.tgz
+.DS_Store
+.idea/
+*.crx
+*.pem
+*.zip
