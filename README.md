@@ -6,6 +6,9 @@ When debugging React Native, pressing `j` only opens the browser on the host mac
 
 This tool was built to allow me to get the developer console up for multiple React Native hosts (VMs / Mac minis), from a single machine.
 
+<img width="1919" height="1049" alt="image" src="https://github.com/user-attachments/assets/9503e1cc-eba5-42ca-ae9d-ed20bbaff06e" />
+
+
 ## Setup
 
 1. Clone this repo
