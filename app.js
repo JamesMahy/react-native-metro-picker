@@ -304,9 +304,12 @@
 
     if (!wsParam) return null;
 
-    const base = chrome.runtime.getURL('devtools/rn_fusebox.html');
     const paramName = secure ? 'wss' : 'ws';
-    return `${base}?${paramName}=${encodeURIComponent(wsParam)}`;
+    const query = `?${paramName}=${encodeURIComponent(wsParam)}`;
+    return {
+      extension: chrome.runtime.getURL('devtools/rn_fusebox.html') + query,
+      metro: `http://${host}/debugger-frontend/rn_fusebox.html${query}`,
+    };
   }
 
   function renderTargets(host, targets) {
@@ -325,7 +328,7 @@
     targets.forEach(function (target) {
       if (!target || typeof target !== 'object') return;
 
-      const devtoolsUrl = buildDevtoolsUrl(host, target);
+      const devtoolsUrls = buildDevtoolsUrl(host, target);
       const card = document.createElement('div');
       card.className = 'target-card';
 
@@ -357,16 +360,16 @@
         meta.appendChild(idBadge);
       }
 
-      if (devtoolsUrl) {
+      if (devtoolsUrls) {
         const copyBtn = document.createElement('button');
         copyBtn.type = 'button';
         copyBtn.className = 'copy-btn';
-        copyBtn.title = 'Copy devtools URL';
+        copyBtn.title = 'Copy Metro-served devtools URL';
         copyBtn.textContent = 'Copy URL';
         copyBtn.addEventListener('click', async function (e) {
           e.stopPropagation();
           try {
-            await navigator.clipboard.writeText(devtoolsUrl);
+            await navigator.clipboard.writeText(devtoolsUrls.metro);
             copyBtn.textContent = 'Copied!';
           } catch (err) {
             copyBtn.textContent = 'Failed';
@@ -380,7 +383,7 @@
         openBtn.textContent = 'Open DevTools';
         openBtn.addEventListener('click', function (e) {
           e.stopPropagation();
-          chrome.tabs.create({ url: devtoolsUrl });
+          chrome.tabs.create({ url: devtoolsUrls.extension });
         });
 
         meta.append(copyBtn, openBtn);
